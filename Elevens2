@@ -20,18 +20,19 @@ public class MethodsP1 {
 		Collections.shuffle(Ranks);
 		System.out.println(Ranks);
 
-		Scanner user = new Scanner(System.in);
-		System.out.println("Please select a number from the grid");
-		String a = user.nextLine();
-		System.out.println("Please select a number that makes that equal to 11");
-		String b = user.nextLine();
-
 		while (deck.size() > 1) {
+			Scanner user = new Scanner(System.in);
+			System.out.println("Please select a number from the grid");
+			String a = user.nextLine();
+			System.out.println("Please select a number that makes that equal to 11");
+			String b = user.nextLine();
+
 			if (Integer.parseInt(a) + Integer.parseInt(b) == 11) {
 
 				System.out.println("Nice Job");
-				deck.remove(a);
-				deck.remove(b);
+				deck.remove(Integer.parseInt(a));
+				deck.remove(Integer.parseInt(b));
+				System.out.println(deck);
 
 			} else {
 				System.out.println("Incorrect");
