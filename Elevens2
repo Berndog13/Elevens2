@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class MethodsP1 {
+
+	private static final List Ranks = new ArrayList(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8,
+			9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+
+	private static List makeDeck() {
+		List result = new ArrayList();
+
+		for (Object j : Ranks) {
+			result.add(Arrays.asList(j));
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		List deck = makeDeck();
+
+		Collections.shuffle(Ranks);
+		System.out.println(Ranks);
+
+		Scanner user = new Scanner(System.in);
+		System.out.println("Please select a number from the grid");
+		String a = user.nextLine();
+		System.out.println("Please select a number that makes that equal to 11");
+		String b = user.nextLine();
+
+		while (deck.size() > 1) {
+			if (Integer.parseInt(a) + Integer.parseInt(b) == 11) {
+
+				System.out.println("Nice Job");
+				deck.remove(a);
+				deck.remove(b);
+
+			} else {
+				System.out.println("Incorrect");
+				{
+
+				}
+			}
+		}
+	}
+}
