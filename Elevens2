@@ -1,20 +1,60 @@
 import java.util.*;
 
-public class MethodsP1 {
+public class Pset {
+	public static void main(String[] args) {
+		
+		threebythree();
+		getRand();
+		array();
+		
+	}
+		
+		public static void threebythree() {
+		int noTimes = 3;
 
-	private static final List Ranks = new ArrayList(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8,
-			9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+		for (int j = 0; j < noTimes; j++) {
+			int[] deck = getRand();
+			for (int i = 0; i < deck.length; i++) {
+				System.out.print(deck[i] + " ");
+			}
+			System.out.println("\n");
+		}
+	}
+
+	public static int[] getRand() {
+		int[] deck = new int[3];
+		int randomNum;
+		for (int i = 0; i < 3; i++) {
+			randomNum = (int) Math.ceil(Math.random() * 10); // Random number created here.
+			for (int x = 0; x < i; x++) {
+				if (deck[x] == randomNum) // Here, code checks if same random number generated before.
+				{
+					randomNum = (int) Math.ceil(Math.random() * 10);// If random number is same, another number
+																	// generated.
+					x = -1; // restart the loop
+				}
+
+			}
+			deck[i] = randomNum;
+		}
+
+		return deck;
+	}
+
+	private static final List Ranks = new ArrayList(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
 
 	private static List makeDeck() {
 		List result = new ArrayList();
 
 		for (Object j : Ranks) {
-			result.add(Arrays.asList(j));
+            // Change result.add(Arrays.asList(j)); to 
+            // result.add(j) because there were arrays in a array causing indexOf errors.
+			result.add(j);
 		}
 		return result;
 	}
 
-	public static void main(String[] args) {
+	public static void array() {
 		List deck = makeDeck();
 
 		Collections.shuffle(Ranks);
@@ -30,8 +70,9 @@ public class MethodsP1 {
 			if (Integer.parseInt(a) + Integer.parseInt(b) == 11) {
 
 				System.out.println("Nice Job");
-				deck.remove(Integer.parseInt(a));
-				deck.remove(Integer.parseInt(b));
+                // Added parseInt to the indexOf because they are ints in the array.
+				deck.remove(deck.indexOf(Integer.parseInt(a)));
+				deck.remove(deck.indexOf(Integer.parseInt(b)));
 				System.out.println(deck);
 
 			} else {
